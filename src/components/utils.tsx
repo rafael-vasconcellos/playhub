@@ -2,6 +2,8 @@ import { ReactNode } from "react"
 import { strip } from "../global"
 
 
+
+
 type IShowProps = {
     when: boolean
     children: ReactNode

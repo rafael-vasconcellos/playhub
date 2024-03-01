@@ -18,6 +18,7 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@types/youtube": "^0.0.50",
     "autoprefixer": "latest",
     "postcss": "latest",
     "tailwindcss": "latest",
