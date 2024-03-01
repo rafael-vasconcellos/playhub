@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    color: white;
+    background-color: black;
+    overflow-x: hidden;
+    /*animation: name duration timing-function delay iteration-count direction fill-mode;*/
+    
+}
+
+@keyframes display {
+    from {opacity: 0.5;}
+    to {opacity: 1;}
+}
+
+@keyframes emerge {
+    from {
+        transform: translateY(5%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scale {
+    from {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

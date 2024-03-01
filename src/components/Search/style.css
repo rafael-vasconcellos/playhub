@@ -1,0 +1,29 @@
+section > #search {
+    height: 2.5rem;
+    width: 35%;
+    border-radius: 999px;
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    left: 32%;
+    padding: 0 20px;
+}
+
+#search:focus-visible {
+    outline: 0;
+}
+
+/*.results:has(div), div:has(svg:not(.hidden)) ~ .results */
+section:has(.results > div), section:has(div > svg) {
+    position: fixed;
+    top: 0; left: 0;
+    padding-top: 7%;
+    width: 100vw;
+    z-index: 1;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+body:has(.results > div), body:has(div > svg) {
+    overflow-y: hidden;
+}

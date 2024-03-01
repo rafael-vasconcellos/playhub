@@ -1,0 +1,24 @@
+.carrosel-itens > div::-webkit-scrollbar {
+    display: none;
+}
+
+.carrosel-itens:has(.details) > div.cursor-pointer {
+    display: none;
+}
+
+.carrosel-itens > div { padding-bottom: 0; }
+
+
+.carrosel-itens > div:has(.details) {
+    padding-left: 75px;
+    padding-bottom: 7rem;
+    /*transition: padding-bottom 0.5s ease-in-out;*/
+}
+
+@media screen and (hover: none) { 
+    .carrosel-itens > div.cursor-pointer {
+        display: none;
+    }
+}
+
+

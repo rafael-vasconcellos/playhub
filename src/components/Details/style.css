@@ -1,0 +1,12 @@
+.details.fixed {
+    overflow-y: scroll;
+    padding-top: 100px;
+}
+
+body:has(.details.details.fixed) {
+    overflow: hidden;
+}
+
+.details { 
+    
+}

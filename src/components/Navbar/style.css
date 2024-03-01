@@ -1,0 +1,47 @@
+input[type="radio"] {
+    display: none;
+}
+
+nav > section.fixed li > label {
+    color: white;
+}
+
+nav > section.fixed li > input[type="radio"]:checked ~ label {
+    color: #b91c1c;
+}
+
+nav > section.fixed:has(ul) {
+    display: none;
+}
+
+nav > section { 
+    animation: opacity 0.3s ease-out forwards;
+}
+
+@keyframes opacity {
+    from { opacity: 0; }
+    to { opacity: 1; }
+
+}
+
+@media screen and (max-width: 750px) {
+    nav > ul { 
+        opacity: 0;
+    }
+
+    nav > section.fixed:has(ul) {
+        display: block;
+    }
+}
+
+
+
+
+input[type="checkbox"]#search-check ~ section:has(input[type="search"]#search) {
+    display: none;
+}
+
+input[type="checkbox"]#search-check:checked ~ section:has(input[type="search"]#search) {
+    display: block;
+}
+
