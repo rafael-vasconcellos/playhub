@@ -1,4 +1,6 @@
 import { production_details, route_search, trending, IPageProps } from "../../global"
+import { ProductionCard } from "./utils"
+import { Metadata } from "next"
 import './style.css'
 import Category from "@/components/Category"
 import Seasons from "@/components/Seasons"
@@ -8,9 +10,14 @@ import Reviews from "@/components/Reviews"
 import Staff from "@/components/Staff"
 import Navbar from "@/components/Navbar"
 import { Show } from "@/components/utils"
-import { ProductionCard } from "./utils"
 
 
+
+
+export const metadata: Metadata = {
+    title: 'Playhub',
+    description: 'A Place for your favorite series, movies, animes, and much more!',
+}
 
 const Production: React.FC<IPageProps & {type: string}> = async function( {type, params} ) { 
     const { production } = params
@@ -35,6 +42,10 @@ const Production: React.FC<IPageProps & {type: string}> = async function( {type,
     const append = "&append_to_response=videos%2Cimages%2Crecommendations%2Csimilar%2Creviews%2Cseasons%2Ccredits"
     const data = await production_details(production_id, type, append, true)
     const trendings = await trending().then(res => res.results)
+
+    if (data.id) {
+        metadata.title = data.title ?? data.name
+    }
     
 
     return (
