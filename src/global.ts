@@ -142,12 +142,12 @@ async function fetchData(url: string, init: RequestInit) {
 
 // /api/production/images
 export async function get_images(id: number) {
-    return await fetchData(`https://api.themoviedb.org/3/movie/${id}/images`, NO_CACHE)
+    return await fetchData(`https://api.themoviedb.org/3/movie/${id}/images`, CACHE_POLICY)
 }
 
 // /api/production/season
 export async function get_season(id: number, season_number: number) { 
-    return await fetchData(`https://api.themoviedb.org/3/tv/${id}/season/${season_number}?language=pt-BR`, NO_CACHE)
+    return await fetchData(`https://api.themoviedb.org/3/tv/${id}/season/${season_number}?language=pt-BR`, CACHE_POLICY)
 }
 
 // /api/production/details
