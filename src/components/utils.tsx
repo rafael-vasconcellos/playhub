@@ -19,8 +19,8 @@ export const Show: React.FC<IShowProps> = function( {when: condition, children, 
 
 
 export function path(
-        type: string, 
-        id: number, 
+        type?: string, 
+        id?: number, 
         title?: string, 
         original?: string, 
     ) { 
@@ -32,7 +32,7 @@ export function path(
     original = strip(original)?.replaceAll(' ', '-')
     const production = title ?? original
 
-    if (!type || !id) { return '' }
+    if (!type || !id || !title) { return '' }
     else if (route && production) { return '/'+route+'/'+production+'-'+id }
     else { return '' }
 }
