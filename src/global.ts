@@ -137,7 +137,10 @@ export function strip(s: string | undefined) {
 }
 
 async function fetchData(url: string, init: RequestInit) {
-    return await fetch(url, init).then(response => response.json())
+    return await fetch(url, init).then( response => { 
+        if (response.status === 200) { return response.json() }
+        else { return {} as {[key: string]: any} }
+    } ).catch( () => null )
 }
 
 // /api/production/images
