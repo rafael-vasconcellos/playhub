@@ -3,14 +3,18 @@
     display: none;
 }
 
+/* .carrosel-itens > div { padding-bottom: 0; } */
 /* remove os botões do slider */
 .carrosel-itens:has(.details) > .cursor-pointer { display: none; }
 
-.carrosel-itens > div { padding-bottom: 0; }
 
+.carrosel-itens > div { 
+    overflow-x: scroll;
+    overflow-y: clip;
+}
 
-.carrosel-itens > div:has(.details) {
-    padding-bottom: 5rem;
+.carrosel-itens > div:has(.details) { 
+    padding-bottom: 7rem;
     padding-left: 75px;
     /*transition: padding-bottom 0.5s ease-in-out;*/
 }
