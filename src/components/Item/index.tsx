@@ -26,7 +26,7 @@ const Item: React.FC<ItemProps> = function( { title, pic, id, type } ) {
 //console.log('Renderizou')
 //style={ {height: '325px'} }
     return (
-        <div className={`i${id}  relative  p-2 cursor-pointer flex flex-col gap-3 justify-center`}
+        <div className={`i${id}  relative px-6 py-2 cursor-pointer flex flex-col gap-3 justify-center`}
          onMouseOver={  () => {
             if (!hover) {setHover(() => true)}
 

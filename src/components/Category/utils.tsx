@@ -30,7 +30,7 @@ export default function CategorySlider(
                     <div className='carrosel-itens flex items-start gap-4 py-4 mb-4'>
                             <SlideButton name="previous" onClick={ () => ref.current?.scrollBy(-ref.current.offsetWidth, 0) } />
 
-                            <div ref={ref} className='flex gap-5 items-start px-3 overflow-x-scroll overflow-y-clip scroll-smooth'>
+                            <div ref={ref} className='flex items-start px-3 overflow-x-scroll overflow-y-clip scroll-smooth'>
                                 {data?.map( (e: IProductionDetails) => <Item title={e.title ?? e.name} pic={e.poster_path} id={e.id} type={type ?? e.media_type} key={`${e.id ?? Math.random()}`} />)}
                             </div>
 
