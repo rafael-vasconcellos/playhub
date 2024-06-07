@@ -2,15 +2,7 @@ input[type="radio"] {
     display: none;
 }
 
-nav > section.fixed li > label {
-    color: white;
-}
-
-nav > section.fixed li > input[type="radio"]:checked ~ label {
-    color: #b91c1c;
-}
-
-nav > section.fixed:has(ul) {
+nav > section.fixed:has(ul) { 
     display: none;
 }
 
