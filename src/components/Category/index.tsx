@@ -1,5 +1,5 @@
 import { IProductionDetails, discover } from '@/global'
-import SliderCategory from './utils'
+import CategorySlider from './utils'
 import { Suspense } from 'react'
 
 
@@ -31,8 +31,8 @@ const Category: React.FC<categoryProps> = async function( {categoryName, categor
 
 
     return ( 
-        //<Suspense fallback={<SliderCategory data={null}>{CategoryTitle}</SliderCategory>}>
-            <SliderCategory data={data} type={type}>{CategoryTitle}</SliderCategory>
+        //<Suspense fallback={<CategorySlider data={null}>{CategoryTitle}</CategorySlider>}>
+            <CategorySlider data={data} type={type}>{CategoryTitle}</CategorySlider>
         //</Suspense>
     )
 }

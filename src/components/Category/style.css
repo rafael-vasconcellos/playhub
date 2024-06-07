@@ -1,17 +1,17 @@
-.carrosel-itens > div::-webkit-scrollbar {
+/* remove a barra de scroll */
+.carrosel-itens > div::-webkit-scrollbar { 
     display: none;
 }
 
-.carrosel-itens:has(.details) > div.cursor-pointer {
-    display: none;
-}
+/* remove os botões do slider */
+.carrosel-itens:has(.details) > .cursor-pointer { display: none; }
 
 .carrosel-itens > div { padding-bottom: 0; }
 
 
 .carrosel-itens > div:has(.details) {
+    padding-bottom: 5rem;
     padding-left: 75px;
-    padding-bottom: 7rem;
     /*transition: padding-bottom 0.5s ease-in-out;*/
 }
 
