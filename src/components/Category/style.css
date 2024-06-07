@@ -4,7 +4,7 @@
 }
 
 /* remove os botões do slider */
-.carrosel-itens:has(.details) > .cursor-pointer { display: none; }
+/* .carrosel-itens:has(.details) > .cursor-pointer { display: none; } */
 
 
 .carrosel-itens > div { 
@@ -14,7 +14,7 @@
 
 .carrosel-itens > div:has(.details) { 
     padding-bottom: 7rem;
-    padding-left: 75px;
+    /* padding-left: 75px; */ /* o botão está sumindo? */
     /*transition: padding-bottom 0.5s ease-in-out;*/
 }
 

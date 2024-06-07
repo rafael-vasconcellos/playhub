@@ -28,9 +28,9 @@ export default function CategorySlider(
             <section className='category'>
                     {children}
                     <div className='carrosel-itens flex items-start gap-4 mb-2 relative'>
-                            <SlideButton name="previous" onClick={ (e) => ref.current?.scrollBy(-ref.current.offsetWidth, 0) } />
+                            <SlideButton name="previous" className="absolute left-0" onClick={ (e) => ref.current?.scrollBy(-ref.current.offsetWidth, 0) } />
 
-                            <div ref={ref} className='flex items-start px-3 py-6 scroll-smooth'>
+                            <div ref={ref} className='flex items-start px-[75px] py-6 scroll-smooth'>
                                 {data?.map( (e: IProductionDetails) => <Item title={e.title ?? e.name} pic={e.poster_path} id={e.id} type={type ?? e.media_type} key={`${e.id ?? Math.random()}`} />)}
                             </div>
 
@@ -46,7 +46,7 @@ function SlideButton( {name, onClick, className}: { name: "next" | "prev" | "pre
     const angle = name==="next"? "" : "rotate-180"
 
     return (
-        <button className={`h-[300px] min-w-14 my-2 bg-primary/40 cursor-pointer flex justify-center items-center ${className}`} onClick={onClick}>
+        <button className={`h-[300px] min-w-14 my-6 bg-primary/40 cursor-pointer flex justify-center items-center z-10 ${className}`} onClick={onClick}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" 
              className={`size-8 ${angle}`}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -55,17 +55,6 @@ function SlideButton( {name, onClick, className}: { name: "next" | "prev" | "pre
     )
 }
 
-
-
-{/* <div className="cursor-pointer h-full">
-                                <button className="bg-zinc-700 rounded-full px-4 pt-2 pb-3 font-bold text-4xl"
-                                onClick={(e:any) => {
-                                    let el = e.target.parentElement?.previousSibling
-                                    el.scrollBy(el.offsetWidth, 0)
-                                } }>
-                                    {">"}
-                                </button>
-                            </div> */}
 
 
 /*const cache = queryClient.getQueryCache().getAll().find(query => query.queryKey === `discover shows ${type} ${categoryName} ${categoryId}`)
