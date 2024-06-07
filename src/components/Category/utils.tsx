@@ -27,10 +27,10 @@ export default function CategorySlider(
         <QueryClientProvider client={queryClient}>
             <section className='category'>
                     {children}
-                    <div className='carrosel-itens flex items-start gap-4 mb-4'>
+                    <div className='carrosel-itens flex items-start gap-4 mb-2 relative'>
                             <SlideButton name="previous" onClick={ (e) => ref.current?.scrollBy(-ref.current.offsetWidth, 0) } />
 
-                            <div ref={ref} className='flex items-start px-3 py-4 scroll-smooth'>
+                            <div ref={ref} className='flex items-start px-3 py-6 scroll-smooth'>
                                 {data?.map( (e: IProductionDetails) => <Item title={e.title ?? e.name} pic={e.poster_path} id={e.id} type={type ?? e.media_type} key={`${e.id ?? Math.random()}`} />)}
                             </div>
 

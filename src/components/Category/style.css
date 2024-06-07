@@ -3,7 +3,6 @@
     display: none;
 }
 
-/* .carrosel-itens > div { padding-bottom: 0; } */
 /* remove os botões do slider */
 .carrosel-itens:has(.details) > .cursor-pointer { display: none; }
 
@@ -19,6 +18,7 @@
     /*transition: padding-bottom 0.5s ease-in-out;*/
 }
 
+/* remove os botôes em uma tela com sem mouse */
 @media screen and (hover: none) { 
     .carrosel-itens > div.cursor-pointer {
         display: none;
