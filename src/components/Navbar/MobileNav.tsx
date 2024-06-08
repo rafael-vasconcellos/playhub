@@ -10,7 +10,7 @@ export default function MobileNav() {
     
 
     return (
-        <section className="w-full fixed bottom-0 left-0 z-50 bg-zinc-800">
+        <section className="w-screen fixed bottom-0 left-0 z-50 bg-zinc-800 text-white">
             <ul className="py-2 flex justify-around">
                 <li>
                     <input type="radio" name="MobileNav" id="mnav-home" />

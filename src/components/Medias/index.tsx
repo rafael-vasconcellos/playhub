@@ -1,5 +1,5 @@
 import { get_images } from "../../global"
-import { IVideo } from "../Media/IMedia"
+import { IVideo } from "../Media/utils"
 import './style.css'
 import SliderMedias, { IImages } from "./Slider"
 

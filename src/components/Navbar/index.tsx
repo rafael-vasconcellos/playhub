@@ -13,7 +13,7 @@ export default function Navbar() {
 
     return ( 
         <QueryClientProvider client={new QueryClient()}>
-            <nav className='relative h-fit py-3 px-6 flex items-center gap-2'>
+            <nav className='relative h-fit w-full py-3 px-6 flex items-center gap-2'>
                 <div className='h-9 bg-contain p-5' style={ {backgroundImage: `url(/logo.png)`, minWidth: '2.25rem'} } />
                 <ul className='flex items-center gap-6 px-3'>
                     <Link href='/'><li>Home</li></Link>

@@ -1,5 +1,5 @@
 'use client'
-import { Videos, Images } from './IMedia'
+import { Videos, Images } from './utils'
 import './style.css'
 
 

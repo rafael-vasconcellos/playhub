@@ -2,7 +2,7 @@
 import { useEffect } from "react"
 import Media from "../Media"
 import { display } from "../utils"
-import { IImage, IVideo } from "../Media/IMedia"
+import { IImage, IVideo } from "../Media/utils"
 
 
 
@@ -31,7 +31,7 @@ export default function SliderMedias( {videos, imagesData}: {videos?: IVideo[], 
     }, [] )
 
     return (
-        <section className="medias bg-zinc-800 my-8 mx-2 rounded-xl">
+        <section className="medias bg-zinc-800 text-white my-8 mx-2 rounded-xl">
 
             <div className="tabmedias flex gap-2 p-3">
                 { videos && 

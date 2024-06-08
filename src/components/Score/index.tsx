@@ -1,5 +1,6 @@
-import star from '../../assets/star.png'
-import fire from '../../assets/fire.png'
+import star from '@/assets/star.png'
+import fire from '@/assets/fire.png'
+
 
 const Score: React.FC<{data: any}> = function( {data} ) { 
 

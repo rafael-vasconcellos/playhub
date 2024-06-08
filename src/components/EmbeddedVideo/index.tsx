@@ -1,6 +1,6 @@
 "use client"
 import { YTAPI } from "../utils"
-import { IVideo } from "../Media/IMedia"
+import { IVideo } from "../Media/utils"
 import './style.css'
 
 

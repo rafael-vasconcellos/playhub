@@ -10,12 +10,14 @@
 }
 
 @media screen and (max-width: 490px) {
-    .score {
-        position: static;
-    }
-
     .poster { 
         min-width: 104px;
         min-height: 156px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .score {
+        position: static;
     }
 }
