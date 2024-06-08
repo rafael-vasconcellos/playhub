@@ -15,7 +15,7 @@ const ProductionCard: React.FC<{data: IProductionDetails | any}> = function( {da
     const background = data? '' : "text-zinc-500 bg-zinc-500"
 
     return (
-        <div className="w-screen h-fit mb-6 bg-center" style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${data?.backdrop_path})`} }>
+        <div className="w-screen h-fit mb-6 bg-center bg-no-repeat bg-cover" style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${data?.backdrop_path})`} }>
             <div className="bg-zinc-950/[0.6] w-full h-full relative">
                     <div className="px-10 py-7 flex gap-4 relative">
 
