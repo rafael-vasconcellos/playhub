@@ -33,11 +33,11 @@ const Person: React.FC<{person?: ICastPerson}> = function( {person} ) {
     const background = person? '' : "text-zinc-500 bg-zinc-500"
 
     return (
-        <div className="flex gap-3 items-center w-1/2 py-4">
-            <div className={`w-24 h-[122px] rounded-full bg-center bg-contain bg-no-repeat ${animate} ${background}`} style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w138_and_h175_face${person?.profile_path})`} } />
-            <div className={animate+` `+background}>
-                <h1 className="font-bold text-xl">{person?.name ?? 'Nome do ator'}</h1>
-                <p className="text-zinc-300">{person?.character}</p>
+        <div className="person w-1/2 py-4 flex gap-3 items-center">
+            <div className={`w-24 h-[122px] min-w-16 rounded-full bg-center bg-contain bg-no-repeat ${animate} ${background}`} style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w138_and_h175_face${person?.profile_path})`} } />
+            <div className={`${animate} ${background}`}>
+                <h1 className="font-bold ">{person?.name ?? 'Nome do ator'}</h1>
+                <p className="text-zinc-300 text-xs py-2">{person?.character}</p>
             </div>
         </div>
     )

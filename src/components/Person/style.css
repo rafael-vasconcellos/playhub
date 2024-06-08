@@ -1,0 +1,11 @@
+.person h1 { 
+    font-size: 1.25rem/* 20px */;
+    line-height: 1.75rem/* 28px */;
+}
+
+@media screen and (max-width: 600px) {
+    .person h1 {
+        font-size: 1.125rem/* 18px */;
+        line-height: 1.75rem/* 28px */;
+    }
+}
