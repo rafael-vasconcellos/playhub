@@ -33,15 +33,14 @@ const Item: React.FC<ItemProps> = function( { title, pic, id, type, original } )
     return ( 
         <div className={`i${id} relative px-6 py-2 cursor-pointer flex flex-col gap-3 justify-center`}
          onClick={ () => navigate.push(path(type, id, title, original)) }
-         onMouseOver={  () => {
-            if (!hover) {setHover(() => true)}
+         onMouseOver={  () => { 
+            if ('ontouchstart' in window || navigator.maxTouchPoints > 0) { return }
+            if (!hover) { setHover(true) }
 
         } } onMouseLeave={ () => { 
             let elements = Array.from(document.querySelectorAll(`.i${id}`))
             for (let indice of elements) {
-                if (indice.children[2]?.className.includes('absolute') && hover) {
-                    setHover(() => false)
-                }
+                if (indice.children[2]?.className.includes('absolute') && hover) { setHover(false) }
             }
         } } >
 
