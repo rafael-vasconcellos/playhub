@@ -3,6 +3,10 @@
     display: none;
 }
 
+.category > .carrosel-itens > button { 
+    height: 300px;
+}
+
 /* remove os botões do slider */
 /* .carrosel-itens:has(.details) > .cursor-pointer { display: none; } */
 
@@ -26,3 +30,8 @@
 }
 
 
+@media screen and (max-width: 700px) {
+    .category > .carrosel-itens > button { 
+        height: 230px;
+    }
+}
