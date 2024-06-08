@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import Details from '../Details'
 import './style.css'
+import { path } from '../utils'
+import { useRouter } from 'next/navigation'
 
 
 type ItemProps = {
@@ -9,10 +11,12 @@ type ItemProps = {
     pic?: string,
     id?: number | undefined,
     type?: string,
+    original?: string
 }
 
-const Item: React.FC<ItemProps> = function( { title, pic, id, type } ) {
+const Item: React.FC<ItemProps> = function( { title, pic, id, type, original } ) {
     const [ hover, setHover ] = useState(false)
+    const navigate = useRouter()
 
     let skeleton, animate_bg = ''
     if (!title) {
@@ -26,9 +30,9 @@ const Item: React.FC<ItemProps> = function( { title, pic, id, type } ) {
     }
 
 
-    // 104, 156
-    return (
+    return ( 
         <div className={`i${id} relative px-6 py-2 cursor-pointer flex flex-col gap-3 justify-center`}
+         onClick={ () => navigate.push(path(type, id, title, original)) }
          onMouseOver={  () => {
             if (!hover) {setHover(() => true)}
 

@@ -13,7 +13,6 @@ type IBannerProps = IDiscover & {
 export default function Component( {data}: {data?: IBannerProps} ) { 
     const [ index, setIndex ] = useState<number>(-1)
 
-
     useEffect(() => { 
         function func() { 
             if (data) { 

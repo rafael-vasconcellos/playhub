@@ -1,7 +1,6 @@
-import { production_details, route_search, trending, IPageProps } from "../../global"
-import { ProductionCard } from "./utils"
 import { Metadata } from "next"
-import './style.css'
+import { production_details, route_search, trending, IPageProps } from "@/global"
+import { ProductionCard } from "./utils"
 import Category from "@/components/Category"
 import Seasons from "@/components/Seasons"
 import Medias from "@/components/Medias"
@@ -10,6 +9,7 @@ import Reviews from "@/components/Reviews"
 import Staff from "@/components/Staff"
 import Navbar from "@/components/Navbar"
 import { Show } from "@/components/utils"
+import './style.css'
 
 
 
