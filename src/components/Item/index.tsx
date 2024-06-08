@@ -23,8 +23,8 @@ const Item: React.FC<ItemProps> = function( { title, pic, id, type } ) {
         animate_bg = 'animate-pulse'
     }
 
-//console.log('Renderizou')
-//style={ {height: '325px'} }
+
+    // 104, 156
     return (
         <div className={`i${id} relative px-6 py-2 cursor-pointer flex flex-col gap-3 justify-center`}
          onMouseOver={  () => {

@@ -1,6 +1,7 @@
 "use client"
 import { useRouter } from "next/navigation"
 import './style.css'
+import { useEffect, useState } from "react"
 
 
 
@@ -44,7 +45,8 @@ export default function MobileNav() {
 
 
 function HomeIcon() { 
-    const selected = document?.URL?.split('/').filter(s => s).length <= 2? "text-primary" : ""
+    const [ selected, setSelectedStatus ] = useState("")
+    useEffect(() => setSelectedStatus(document?.URL?.split('/').filter(s => s).length <= 2? "text-primary" : ""), [])
 
     return (
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} 
@@ -56,7 +58,8 @@ function HomeIcon() {
 
 
 function MoviesIcon() { 
-    const selected = document?.URL?.includes("/filmes")? "text-primary" : ""
+    const [ selected, setSelectedStatus ] = useState("")
+    useEffect(() => setSelectedStatus(document?.URL?.includes("/filmes")? "text-primary" : ""), [])
 
     return (
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} 
@@ -68,7 +71,8 @@ function MoviesIcon() {
 
 
 function SeriesIcon() { 
-    const selected = document?.URL?.includes("/series")? "text-primary" : ""
+    const [ selected, setSelectedStatus ] = useState("")
+    useEffect(() => setSelectedStatus(document?.URL?.includes("/series")? "text-primary" : ""), [])
 
     return (
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} 
