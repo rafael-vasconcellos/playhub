@@ -43,9 +43,7 @@ const Production: React.FC<IPageProps & {type: string}> = async function( {type,
     const data = await production_details(production_id, type, append, true)
     const trendings = await trending().then(res => res.results)
 
-    if (data.id) {
-        metadata.title = data.title ?? data.name
-    }
+    if (data.id) { metadata.title = data.title ?? data.name }
     
 
     return (
@@ -57,7 +55,7 @@ const Production: React.FC<IPageProps & {type: string}> = async function( {type,
 
             <div className="relative">
                 { trendings?.length > 0 && <Aside name={'Trending'} content={trendings?.slice(0, 7)} /> }
-                <section className="w-4/5">
+                <section>
                     {data.seasons?.length > 0 && production_id === data.id && 
                         <Seasons seasons={data.seasons} id={data.id} /> }
 

@@ -10,7 +10,7 @@ export default function SeasonWidget( {seasons, episodes}: {seasons: any[], epis
     return (
         <section className="px-4 mb-14">
             <b className="text-xl">Temporadas:</b>
-            <div className="flex gap-1 m-4">
+            <div className="m-4 flex gap-1 flex-wrap">
                 { seasons.map(e => 
                     <span className="rounded-full cursor-pointer py-2 px-4 font-bold" style={ {border: '1px solid white'} } 
                     onClick={  () => {display(`temp`+e.season_number, 'episodes', 'hidden')}  } key={`tempn${e.season_number}`}

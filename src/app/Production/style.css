@@ -1,0 +1,7 @@
+@media screen and (min-width: 1075px) {
+    .relative > aside ~ section { 
+        width: 80%;
+    }
+}
+
+
