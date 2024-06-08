@@ -4,7 +4,7 @@ import fire from '../../assets/fire.png'
 const Score: React.FC<{data: any}> = function( {data} ) { 
 
     return (
-        <div className="absolute top-6 right-8 flex items-center gap-4">
+        <div className="score absolute top-6 right-8 flex items-center gap-4">
             <div className='flex items-center gap-2'>
                 <div className="w-6 h-6 bg-contain" style={ {backgroundImage: `url(${star.src})`} } />
                 <p className="flex flex-col items-center"> 

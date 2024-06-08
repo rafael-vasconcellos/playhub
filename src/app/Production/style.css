@@ -1,7 +1,21 @@
-@media screen and (min-width: 1075px) {
+.poster { 
+    min-width: 150px;
+    min-height: 225px;
+}
+
+@media screen and (min-width: 1075px) { 
     .relative > aside ~ section { 
         width: 80%;
     }
 }
 
+@media screen and (max-width: 490px) {
+    .score {
+        position: static;
+    }
 
+    .poster { 
+        min-width: 104px;
+        min-height: 156px;
+    }
+}
