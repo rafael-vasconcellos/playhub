@@ -23,7 +23,7 @@ const Category: React.FC<categoryProps> = async function( {categoryName, categor
     const data = await getItems()
     const skeleton = !data?.length? 'text-zinc-500 bg-zinc-500 animate-pulse' : ''
     const CategoryTitle = 
-        <h1 className={`${skeleton} px-2 inline-block text-2xl font-bold`}>
+        <h1 className={`${skeleton} px-4 inline-block text-2xl font-bold`}>
             { content || !categoryId? 
                 categoryName : (type==='tv'? 'Séries de ' : 'Filmes de ') + categoryName 
             }

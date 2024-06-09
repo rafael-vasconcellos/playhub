@@ -18,15 +18,17 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /*background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-    overflow-x: hidden;
-    position: relative;
-    /*animation: display 1s ease-in-out 0s 1 normal forwards;*/
+  animation: display 1s ease-in-out 0s 1 normal forwards;
+  /*animation: name duration timing-function delay iteration-count direction fill-mode;*/
+
+  overflow-x: hidden;
+  position: relative;
 }
 
 @keyframes display {

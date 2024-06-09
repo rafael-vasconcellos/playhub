@@ -94,7 +94,7 @@ function BannerCard( {item}: {item?: IDetailsResumed} ) {
 
 
     return (
-        <section ref={section} className={`banner w-screen h-screen mb-6 overflow-hidden bg-zinc-950 bg-no-repeat bg-center bg-cover ${animate}`} style={{backgroundImage: `url(${display.banner})`}} >
+        <section ref={section} className={`banner w-screen h-screen mb-6 overflow-hidden bg-black text-white bg-no-repeat bg-center bg-cover ${animate}`} style={{backgroundImage: `url(${display.banner})`}} >
             <div className={`w-full h-full bg-zinc-950/[0.4] flex flex-col justify-end`}>
                 <div ref={container} className={`px-10 py-20 animate-emerge ${elements_alignments}`}>
                         <div className='py-3 flex items-center gap-2'>
