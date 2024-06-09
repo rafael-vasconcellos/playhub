@@ -46,7 +46,7 @@ const Details: React.FC<detailProps> = function( { type, id } ) {
 
 
     return (
-        <section className={`${screen_status.popup_bg} details animate-scale z-10 bg-zinc-950/40 flex justify-center items-center cursor-default`}
+        <section className={`${screen_status.popup_bg} details animate-scale z-10 bg-zinc-950/40 text-white cursor-default flex justify-center items-center`}
          onClick={   () => setScreen( () => screen.normal )   }> {/* fundo preto */}
                 <div className={`bg-zinc-800 ${screen_status.container} rounded-b-2xl`} 
                  onClick={ (e) => e.stopPropagation() }> {/* container */}
