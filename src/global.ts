@@ -26,9 +26,10 @@ export const ProductionDetailsSchema = {
     similar: {results: []},
     reviews: {results: []},
     credits: undefined
-  
+
 }
 
+export const SeasonSchema = { episodes: [], season_number: 0, }
 
 type IProductionSchema = typeof ProductionDetailsSchema
 
@@ -78,6 +79,33 @@ export type IDiscover = {
     total_pages: number
     total_results: number
     results: IDetailsResumed[]
+}
+
+export type ISeason = {
+    "air_date": number | null,
+    "episode_count": number,
+    "id": number,
+    "name": string,
+    "overview": string,
+    "poster_path": string | null,
+    "season_number": number,
+    "vote_average": number,
+    episodes?: IEpisode[]
+}
+
+export type IEpisode = { 
+    air_date: string
+    episode_number: number
+    season_number: number
+    id: number
+    still_path: string
+    name: string
+    overview: string
+    production_code: string
+    runtime: number
+    show_id: number
+    vote_average: number
+    vote_count: number
 }
 
 export type IPageProps = { 
@@ -149,8 +177,8 @@ export async function get_images(id: number) {
 }
 
 // /api/production/season
-export async function get_season(id: number, season_number: number) { 
-    return await fetchData(`https://api.themoviedb.org/3/tv/${id}/season/${season_number}?language=pt-BR`, CACHE_POLICY)
+export async function get_season(seasonId: number, season_number: number) { 
+    return await fetchData(`https://api.themoviedb.org/3/tv/${seasonId}/season/${season_number}?language=pt-BR`, CACHE_POLICY)
 }
 
 // /api/production/details
@@ -159,7 +187,7 @@ export async function production_details(
     type: string | undefined, 
     append?: string | undefined, 
     cache?: boolean | RequestInit
-    ) { 
+    ): Promise<IProductionDetails> { 
 
     append = append ?? ''
     cache = cache? CACHE_POLICY : NO_CACHE

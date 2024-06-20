@@ -1,40 +1,28 @@
 "use client"
-import { display } from "../utils"
+import { useState } from "react"
+import EpisodesList from "./EpisodesList"
+import { ISeason } from "@/global"
 
 
 
-export const EpisodesSchema = { episodes: [], season_number: 0, }
-
-export default function SeasonWidget( {seasons, episodes}: {seasons: any[], episodes: typeof EpisodesSchema[]} ) { 
+export default function SeasonWidget( {seasons, seasonsWithEpisodes}: {seasons: ISeason[], seasonsWithEpisodes: ISeason[]} ) { 
+    const [ current_display, setCurrentDisplay ] = useState(-1)
+    // display(`temp`+e.season_number, 'episodes', 'hidden')
+    // <div className={`temp${e.season_number} hidden`} key={`temp${e.season_number}`}>
 
     return (
         <section className="px-4 mb-14">
             <b className="text-xl">Temporadas:</b>
             <div className="m-4 flex gap-1 flex-wrap">
-                { seasons.map(e => 
+                { seasons.map( (season, i) => 
                     <span className="rounded-full cursor-pointer py-2 px-4 font-bold" style={ {border: '1px solid white'} } 
-                    onClick={  () => {display(`temp`+e.season_number, 'episodes', 'hidden')}  } key={`tempn${e.season_number}`}
-                    > {e.season_number} </span>)
+                    key={`tempn-${season.season_number}`} onClick={ () => { setCurrentDisplay(i) } }>
+                        {season.season_number}
+                    </span>)
                 }
             </div>
 
-            <div className="episodes">
-                { episodes?.map( (e: typeof EpisodesSchema) => 
-
-                    <div className={`temp${e.season_number} hidden`} key={`temp${e.season_number}`}>
-                        { e.episodes.map( (indice:any) => 
-                            <div className="flex gap-2 my-7" key={indice.id}>
-                                <img className="bg-zinc-500" src={`https://www.themoviedb.org/t/p/w355_and_h200_multi_faces${indice.still_path}`} width="168" height="70" alt=" " />
-                                <div>
-                                    <h1 className="font-bold">{indice.name}</h1>
-                                    <p className="my-2 w-4/5">{indice.overview}</p>
-                                </div>
-                            </div>
-                        ) }
-                    </div>
-
-                ) }
-            </div>
+            <EpisodesList episodes={seasonsWithEpisodes[current_display-1]?.episodes} />
         </section>
     )
 }

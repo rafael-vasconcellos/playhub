@@ -1,9 +1,9 @@
 "use client"
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useTransition } from 'react'
 import genres from '@/genres'
 import Item from '../Item'
+import { IDetailsResumed, IDiscover } from '@/global'
 import './style.css'
-import { IDiscover } from '@/global'
 
 
 
@@ -11,78 +11,59 @@ async function fetchData(
     queryname: string | number, 
     type: string, 
     page?: number
-    ): Promise<IDiscover | { results?: IDiscover[]}> { 
+): Promise<IDiscover> { 
 
     page = page ?? 1
     return await fetch(`/api/search?q=${queryname}&type=${type}&page=${page}`)
     .then(res => {
         if (res.status === 200) { return res.json() }
-        else { return {} }
-    } ) }
+        else { return {} as any }
+    } ) 
+}
+
+async function get_content(e:any) { 
+    const contents: IDetailsResumed[] = []
+    if (e.target.value === '') { return contents }
+
+
+    const filmes = genres.movie.list.filter(indice => indice.name.toLowerCase().includes(e.target.value))
+    const series = genres.tv.list.filter(indice => indice.name.toLowerCase().includes(e.target.value))
+
+    filmes.forEach(async i => { 
+        const response = await fetchData(i.id, i.type, 1)
+        if ( (response?.results?.length ?? 0) > 0 ) { contents.push(...response.results) }
+    } )
+
+    series.forEach(async i => { 
+        const response = await fetchData(i.id, i.type, 1)
+        if ((response?.results?.length ?? 0) > 0) { contents.push(...response.results) }
+    } )
+
+
+    if (filmes.length === 0 || series.length === 0) {
+        const [ tvResults, moviesResults ] = await Promise.all([ fetchData(e.target.value, 'tv'), fetchData(e.target.value, 'movie') ])
+        if (tvResults.results?.length) { contents.push(...tvResults.results) }
+        if (moviesResults.results?.length) { contents.push(...moviesResults.results) }
+    }
+
+    return contents
+}
+
+
 
 export default function Search() {
-    let page = 1
     const [ contents, setContents ] = useState([] as any[])
-    const [ loading, setLoading ] = useState(false)
-
-
-    function get_content(e:any) { 
-        if (e.target.value === '') { return false }
-        else { setLoading(true) }
-
-
-        const filmes = genres.movie.list.filter(indice => indice.name.toLowerCase().includes(e.target.value))
-        const series = genres.tv.list.filter(indice => indice.name.toLowerCase().includes(e.target.value))
-
-        filmes.forEach(async i => { 
-            const response = await fetchData(i.id, i.type, 1)
-            if ( (response?.results?.length ?? 0) > 0 ) { setContents(prevState => [...prevState, response.results]) }
-        } )
-
-        series.forEach(async i => { 
-            const response = await fetchData(i.id, i.type, 1)
-            if ((response?.results?.length ?? 0) > 0) { setContents(prevState => [...prevState, response.results]) }
-        } )
-
-
-        if (filmes.length === 0 && series.length === 0) {
-            fetchData(e.target.value, 'tv', page).then(res => handler(res) )
-            fetchData(e.target.value, 'movie', page).then(res => handler(res) )
-        }
-
-
-    }
-
-    function handler(res: any) { console.log(res)
-
-        const section: any = document.querySelector('section:has(.results)')
-        if ( res?.page === res?.total_pages && section ) {
-            section.onscrollend = undefined
-            page = 0
-            console.log('Search done')
-
-        } /*else { 
-            page = res?.page + 1
-            section.onscrollend = () => { if ( section.children[1].value !== '' && page ) { 
-                get_content( {target: section.children[1]} )
-                console.log("page: "+page)
-            } }
-
-        }*/
-
-        setContents(  prevState => [...prevState ?? [], ...res?.results ?? []].sort(() => {  
-            return Math.round(Math.random()) > 0? -1 : 0
-        } )  )
-
-        setLoading(false)
-    }
+    const [ isLoading, startTransition ] = useTransition()
 
 
     useEffect( () => { 
         let search:any = document.querySelector('#search')
         search.onsearch = (e:any) => { 
-            setContents( () => [] ) ; page = 1
-            get_content(e)
+            if (contents.length) { setContents( () => [] ) }
+            startTransition(async() => { 
+                const result = await get_content(e)
+                setContents(result)
+            } )
         }
 
         return () => { search = undefined }
@@ -97,7 +78,7 @@ export default function Search() {
                     {contents.map(e => <Item title={e.title ?? e.name} pic={e.backdrop_path ?? e.poster_path} id={e.id} type={e.type} key={contents.indexOf(e)} />)}
                 </div>
 
-                { loading && 
+                { isLoading && 
                     <div className={`flex justify-center`}>
                         <svg className={`m-auto`} shapeRendering="auto" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
                         width="400px" height="400px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
@@ -114,4 +95,39 @@ export default function Search() {
 
 
 
-// https://api.themoviedb.org/3/search/${type}?query=${e.target.value}&include_adult=true&language=pt-BR&page=1
+
+
+/*
+    function handler(res: IDiscover) { console.log(res)
+
+        const section = document.querySelector('section:has(.results)') as HTMLElement
+        if ( res?.page === res?.total_pages && section ) {
+            section.onscrollend = null
+            setPage(1)
+            console.log('Search done')
+
+        } else { 
+            setPage(res?.page ?? 0 + 1)
+            if (section?.onscrollend) { 
+                section.onscrollend = () => { 
+                    const child = section.children[1] as HTMLInputElement
+                    if ( child?.value !== '' && page && child ) { 
+                        get_content({ target: child })
+                        console.log("page: "+page)
+                    } 
+                }
+            }
+
+        }
+
+        setContents(  prevState => [...prevState ?? [], ...res?.results ?? []].sort(() => {  
+            return Math.round(Math.random()) > 0? -1 : 0
+        } )  )
+
+        //setLoading(false)
+    }
+
+    https://api.themoviedb.org/3/search/${type}?query=${e.target.value}&include_adult=true&language=pt-BR&page=1
+*/
+
+

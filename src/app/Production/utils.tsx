@@ -1,8 +1,8 @@
+import { IProductionDetails } from "@/global"
 import { IVideo } from "@/components/Media/utils"
-import EmbeddedVideo, { ButtonVideo } from "../../components/EmbeddedVideo"
-import Score from "../../components/Score"
-import { Show } from "../../components/utils"
-import { IProductionDetails } from "../../global"
+import { ButtonVideo, EmbeddedVideo } from "@/components/EmbeddedVideo"
+import Score from "@/components/Score"
+import { Show } from "@/components/utils"
 
 
 
@@ -15,7 +15,7 @@ const ProductionCard: React.FC<{data: IProductionDetails | any}> = function( {da
     const background = data? '' : "text-zinc-500 bg-zinc-500"
 
     return (
-        <div className="min-w-screen w-fit h-fit mb-6 text-white bg-center bg-no-repeat bg-cover" style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${data?.backdrop_path})`} }>
+        <div className="min-w-[100vw] w-fit h-fit mb-6 text-white bg-center bg-no-repeat bg-cover" style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${data?.backdrop_path})`} }>
             <div className="bg-zinc-950/[0.6] w-full h-full relative">
                     <div className="px-[2vw] py-7 relative flex gap-6 items-start">
 

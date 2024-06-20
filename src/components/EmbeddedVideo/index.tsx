@@ -26,8 +26,6 @@ const EmbeddedVideo: React.FC<EmbeddedVideoProps> = function( {videos} ) {
     )
 }
 
-export default EmbeddedVideo
-
 
 const ButtonVideo = function () { 
     let trailer_hover: boolean
@@ -47,9 +45,10 @@ const ButtonVideo = function () {
                 }, 200 )
             }
         } }>
-            Assistir trailer</button>
+            Assistir trailer
+        </button>
     )
 }
 
 
-export { ButtonVideo }
+export { ButtonVideo, EmbeddedVideo }

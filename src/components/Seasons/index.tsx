@@ -1,28 +1,25 @@
-import { get_season } from "@/global";
-import SeasonWidget, { EpisodesSchema } from "./Widget";
+import { ISeason, get_season } from "@/global";
+import SeasonWidget from "./Widget";
+import { Suspense } from "react";
 
 
 
-const Seasons: React.FC<{seasons: any[], id: number}> = function( {seasons, id} ) { 
-    const { data: episodes, method: fetchSeasons }: {
-        data: typeof EpisodesSchema[]
-        method: () => void
-    } = { 
-        data: [EpisodesSchema],
-        async method() { 
-            const promises = seasons.map(indice => {
-                return get_season(id, indice.season_number)
-            } );
+async function handler(id: number, seasons: ISeason[]) { 
+    const promises = seasons.map(indice => {
+        return get_season(id, indice.season_number)
+    } );
 
-            Promise.all(promises).then(res => this.data = res)
-        }
-    }
+    return await Promise.all(promises)
+}
 
-    fetchSeasons()
+const Seasons: React.FC<{seasons: ISeason[], id: number}> = async function( {seasons, id} ) { 
+    const seasonsWithEpisodes = await handler(id, seasons)
 
 
     return ( 
-        <SeasonWidget seasons={seasons} episodes={episodes} />
+        <Suspense fallback={<p>Loading...</p>}>
+            <SeasonWidget seasons={seasons} seasonsWithEpisodes={seasonsWithEpisodes} />
+        </Suspense>
     )
 }
 

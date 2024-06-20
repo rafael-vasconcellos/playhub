@@ -1,7 +1,7 @@
 import { get_images } from "../../global"
 import { IVideo } from "../Media/utils"
 import './style.css'
-import SliderMedias, { IImages } from "./Slider"
+import CardMedias, { IImages } from "./Card"
 
 
 
@@ -12,14 +12,12 @@ type MediasProps = {
 }
 
 const Medias: React.FC<MediasProps> = async function( {videos, id} ) { 
-    const imagesData: IImages = await get_images(id).then(res => { //console.log(res)
-        if (res?.success) { return res }
-        else { return [] }
-    } )
-
+    const imagesData: IImages = await get_images(id)
+    const videosData = { videos }
+    const medias = Object.assign(videosData, imagesData)
 
     return (
-        <SliderMedias videos={videos} imagesData={imagesData} />
+        <CardMedias medias={medias} />
     )
 }
 
