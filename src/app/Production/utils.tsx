@@ -1,5 +1,5 @@
 import { IProductionDetails } from "@/global"
-import { IVideo } from "@/components/Media/utils"
+import { IVideo } from "@/components/Media/Images"
 import { ButtonVideo, EmbeddedVideo } from "@/components/EmbeddedVideo"
 import Score from "@/components/Score"
 import { Show } from "@/components/utils"

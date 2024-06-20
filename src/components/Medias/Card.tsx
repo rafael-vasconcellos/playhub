@@ -1,8 +1,7 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Media from "../Media"
-import { IImage, IVideo } from "../Media/utils"
-import { display } from "../utils"
+import { IImage, IVideo } from "../Media/Images"
 
 
 

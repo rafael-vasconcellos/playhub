@@ -1,9 +1,9 @@
 "use client"
 import { useState } from 'react'
-import Details from '../Details'
-import './style.css'
-import { path } from '../utils'
 import { useRouter } from 'next/navigation'
+import Details from '../Details'
+import { path } from '../utils'
+import './style.css'
 
 
 type ItemProps = {

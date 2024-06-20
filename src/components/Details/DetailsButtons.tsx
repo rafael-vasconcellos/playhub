@@ -4,6 +4,7 @@ import { path } from "../utils"
 import { IProductionDetails } from "../../global"
 
 
+
 export const screen = { 
     normal: {
         popup_bg: 'absolute -top-2 -left-14', 
@@ -23,13 +24,11 @@ export const screen = {
 }
 
 
-
-
 export const DetailsButtons: React.FC< {
         type: string | undefined,
         content: IProductionDetails, 
         setScreen: any
-    } > = function( {type, content, setScreen} ) { 
+} > = function( {type, content, setScreen} ) { 
 
 
     const url = (type && content?.id)? path(
@@ -68,7 +67,5 @@ export const DetailsButtons: React.FC< {
         </>
     )
 }
-
-
 
 

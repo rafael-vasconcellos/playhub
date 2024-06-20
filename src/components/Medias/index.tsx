@@ -1,5 +1,5 @@
 import { get_images } from "../../global"
-import { IVideo } from "../Media/utils"
+import { IVideo } from "../Media/Images"
 import './style.css'
 import CardMedias, { IImages } from "./Card"
 

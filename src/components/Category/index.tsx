@@ -1,5 +1,5 @@
 import { IProductionDetails, discover } from '@/global'
-import CategorySlider from './utils'
+import CategorySlider from './CategorySlider'
 import { Suspense } from 'react'
 
 

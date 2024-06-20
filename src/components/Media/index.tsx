@@ -1,5 +1,6 @@
 'use client'
-import { Videos, Images } from './utils'
+import Images from './Images'
+import Videos from './Videos'
 import './style.css'
 
 

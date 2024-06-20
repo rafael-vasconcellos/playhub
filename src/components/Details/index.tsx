@@ -1,8 +1,8 @@
 "use client"
 import { useState, useEffect } from "react"
 import { useQuery } from "react-query"
+import { DetailsButtons, screen } from "./DetailsButtons"
 import './style.css'
-import { DetailsButtons, screen } from "./utils"
 import { IProductionDetails, ProductionDetailsSchema } from "@/global"
 
 
@@ -30,11 +30,11 @@ const Details: React.FC<detailProps> = function( { type, id } ) {
     const [ screen_status, setScreen ] = useState( screen.normal )
 
     const { data: content, remove } = useQuery(`${id} content details`, async() => {
-            return await fetch(`/api/production/details?id=${id}&type=${type}`) // &extend=true
-            .then(res => { 
-              if (res.status === 200) { return res.json() }
-              return null
-            } )
+        return await fetch(`/api/production/details?id=${id}&type=${type}`) // &extend=true
+        .then(res => { 
+          if (res.status === 200) { return res.json() }
+          return null
+        } )
 
     }, { staleTime: Infinity, placeholderData: ContentSchema }   )
 
@@ -59,47 +59,47 @@ const Details: React.FC<detailProps> = function( { type, id } ) {
 
                       <div className="relative">
                           <div className="w-full px-3 py-4"> {/* primeira coluna */}
-                                  <div>
-                                      {content?.id !== 0 && <span className={`mr-2 font-bold p-1 ${content?.adult? "bg-zinc-950" : "bg-sky-500"} text-zinc-100`}>PG-{content?.adult? "18":"13"}</span> }
-                                      <span className={skeleton}> 
-                                        { !Number.isNaN(Math.floor(content?.runtime / 60)) ?
-                                            Math.floor(content?.runtime/60)+'h' : '' }
-                                        {(  content?.runtime%60 !== 0 && !Number.isNaN(content?.runtime % 60)  )? 
-                                            content?.runtime%60+'min' : ''}
-                                      </span><br/>
-                                  </div>
+                                <div>
+                                    {content?.id !== 0 && <span className={`mr-2 font-bold p-1 ${content?.adult? "bg-zinc-950" : "bg-sky-500"} text-zinc-100`}>PG-{content?.adult? "18":"13"}</span> }
+                                    <span className={skeleton}> 
+                                      { !Number.isNaN(Math.floor(content?.runtime / 60)) ?
+                                          Math.floor(content?.runtime/60)+'h' : '' }
+                                      {(  content?.runtime%60 !== 0 && !Number.isNaN(content?.runtime % 60)  )? 
+                                          content?.runtime%60+'min' : ''}
+                                    </span><br/>
+                                </div>
 
-                                  <p className={`my-1 ${skeleton}`}>{content?.release_date?.slice(0, 4)}</p>
+                                <p className={`my-1 ${skeleton}`}>{content?.release_date?.slice(0, 4)}</p>
 
-                                  <ul className={`flex gap-2 my-2 flex-wrap ${screen_status.stats}`}>
-                                          {content?.genres?.map( (e: IGenre) => <li className={skeleton} key={e.id? e.id : Math.random()}> {e.name} </li>)}
-                                  </ul>
+                                <ul className={`flex gap-2 my-2 flex-wrap ${screen_status.stats}`}>
+                                        {content?.genres?.map( (e: IGenre) => <li className={skeleton} key={e.id? e.id : Math.random()}> {e.name} </li>)}
+                                </ul>
 
-                                  <div className={`py-2 ${skeleton}`}>Média: {content?.vote_average}<br/>Popularidade: {content?.popularity}</div>
-                                  <p className={`${screen_status.more} py-2`}>{content?.overview}</p>
+                                <div className={`py-2 ${skeleton}`}>Média: {content?.vote_average}<br/>Popularidade: {content?.popularity}</div>
+                                <p className={`${screen_status.more} py-2`}>{content?.overview}</p>
                           </div>
 
 
                           {/* segunda coluna */}
                           <div className={`${screen_status.more} absolute top-0 right-0 w-1/2 px-2 py-8 flex flex-col gap-2`}>
-                                  <div>
-                                      Produção: {content?.production_companies?.map( (e: IGenre) => {
-                                          if (content?.production_companies.indexOf(e) !== content?.production_companies.length-1) { 
-                                              return`${e.name}, `
-                                          } else {
-                                              return`${e.name}`
-                                          }
-                                      } ) }
-                                  </div>
-                                  <div>
-                                      Gêneros: {content?.genres?.map( (e: IGenre) => {
-                                          if (content?.genres.indexOf(e) !== content?.genres.length-1) { 
-                                              return`${e.name}, `
-                                          } else {
-                                              return e.name
-                                          }
-                                      } ) }
-                                  </div>
+                                <div>
+                                    Produção: {content?.production_companies?.map( (e: IGenre) => {
+                                        if (content?.production_companies.indexOf(e) !== content?.production_companies.length-1) { 
+                                            return`${e.name}, `
+                                        } else {
+                                            return`${e.name}`
+                                        }
+                                    } ) }
+                                </div>
+                                <div>
+                                    Gêneros: {content?.genres?.map( (e: IGenre) => {
+                                        if (content?.genres.indexOf(e) !== content?.genres.length-1) { 
+                                            return`${e.name}, `
+                                        } else {
+                                            return e.name
+                                        }
+                                    } ) }
+                                </div>
                           </div>
                       </div>
 
